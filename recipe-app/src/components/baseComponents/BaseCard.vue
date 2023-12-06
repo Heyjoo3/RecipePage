@@ -1,27 +1,41 @@
 <template>
   <div class="card">
-    <h2>Nudeln mit Pesto</h2>
-    <p><b>10min</b></p>
+    <h2>{{ rezept.titel }}</h2>
+    <p>
+      <b>{{ rezept.dauer }} min</b>
+    </p>
 
-    <input type="checkbox" name="isFavorit" id="" />
-    <label for="isFavorit">Favorit</label>
+    <div @click="toggleFavorite()">
+      <i v-if="rezept.isFavorite" class="fa-solid fa-star"></i>
+      <i v-else class="fa-regular fa-star"></i>
+    </div>
+
     <br />
-    <img
-      src="../../assets/default.jpg"
-      alt="Leider kann kein Bild angeizeigt werden ..."
-    />
+    <!-- <img src="@/assets/burger.jpg" alt="" /> -->
+    <img :src="require('@/assets/' + rezept.imgID)" :alt="rezept.imgID" />
+    <!-- <img :src="source" alt="shit" /> -->
     <br />
     <h3>Zutaten für 4 Personen</h3>
-    <ul>
-      <li>500 g Nudeln</li>
-      <li>1 Glas Pesto</li>
+    <ul v-for="(zutat, index) in rezept.zutaten" :key="index">
+      <li>{{ zutat }}</li>
     </ul>
     <br />
-    <h3>Schritte</h3>
-    <ol>
-      <li>Nudeln nach Packungsanweisung kochen</li>
-      <li>Pesto hinzumischen</li>
-    </ol>
+    <h3>Anleitung</h3>
+    <!-- <ol v-for="(schritt, index) in rezept.anleitung" :key="index">
+      <li>{{ schritt }}</li>
+    </ol> -->
+    <div v-show="isOpen">
+      <ol v-if="rezept.anleitung.length > 0" start="1">
+        <li v-for="(schritt, index) in rezept.anleitung" :key="index">
+          {{ schritt }}
+        </li>
+      </ol>
+    </div>
+
+    <button @click="openAnleitung">
+      <i v-if="isOpen" class="fa-solid fa-chevron-up"></i>
+      <i v-else class="fa-solid fa-chevron-down"></i>
+    </button>
 
     <div class="buttonBox">
       <button @click="openModal"><i class="fa-solid fa-pencil"></i></button>
@@ -32,11 +46,40 @@
 
 <script>
 export default {
+  data() {
+    return {
+      // source: require("@/assets/default.jpg"),
+      isOpen: false,
+    };
+  },
+  // watch: {
+  //   "rezept.imgID": function (newImgID) {
+  //     if (newImgID) {
+  //       this.source = require(`@/assets/${newImgID}`);
+  //     }
+  //   },
+  // },
+  props: {
+    rezept: Object,
+  },
   methods: {
     openModal() {
       this.$store.dispatch("toggleModal");
     },
+    openAnleitung() {
+      this.isOpen = !this.isOpen;
+    },
+    toggleFavorite() {
+      const info = this.rezept.titel;
+      this.$eventBus.emit("toggleFavorite", info);
+    },
   },
+  // mounted() {
+  //   if (this.rezept && this.rezept.imgID) {
+  //     this.source = require(`@/assets/${this.rezept.imgID}`);
+  //     console.log(this.source);
+  //   }
+  // },
 };
 </script>
 

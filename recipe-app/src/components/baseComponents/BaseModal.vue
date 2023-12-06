@@ -1,34 +1,34 @@
 <template>
   <div class="backdrop" @click="closeModal"></div>
-  <Transition>
-    <div class="modal" v-if="isShowing">
-      <form @submit.prevent="">
-        <h2>Füge ein Rezept hinzu</h2>
-        <label for="">Titel</label> <br />
-        <input type="text" /><br />
-        <label for="">Dauer</label><br />
-        <input type="number" /><br />
-        <label for="">Foto</label><br />
-        <input type="file" /><br />
-        <label for="">Zutaten</label><br />
-        <input type="text" /><br />
-        <label for="">Schritte</label><br />
-        <input type="text" /><br />
+  <!-- <Transition> -->
+  <div class="modal" v-if="isShowing">
+    <form @submit.prevent="">
+      <h2>Füge ein Rezept hinzu</h2>
+      <label for="">Titel</label> <br />
+      <input type="text" /><br />
+      <label for="">Dauer</label><br />
+      <input type="number" /><br />
+      <label for="">Foto</label><br />
+      <input type="file" /><br />
+      <label for="">Zutaten</label><br />
+      <input type="text" /><br />
+      <label for="">Schritte</label><br />
+      <input type="text" /><br />
 
-        <input type="radio" name="diet" value="Carnivore" id="carnivore" />
-        <label for="">Carnivore</label><br />
-        <input
-          type="radio"
-          name="diet"
-          value="Vegetrarisch"
-          id="vegetrarisch"
-        /><label for="">Vegetarisch</label><br />
-        <input type="radio" name="diet" value="Vegan" id="vegan" />
-        <label for="">Vegan</label><br />
-        <button>Speichern</button>
-      </form>
-    </div>
-  </Transition>
+      <input type="radio" name="diet" value="Carnivore" id="carnivore" />
+      <label for="">Carnivore</label><br />
+      <input
+        type="radio"
+        name="diet"
+        value="Vegetrarisch"
+        id="vegetrarisch"
+      /><label for="">Vegetarisch</label><br />
+      <input type="radio" name="diet" value="Vegan" id="vegan" />
+      <label for="">Vegan</label><br />
+      <button>Speichern</button>
+    </form>
+  </div>
+  <!-- </Transition> -->
 </template>
 
 <script>
@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style scoped>
-.v-enter-from,
+/* .v-enter-from,
 .v-leave-to {
   opacity: 0;
 }
@@ -61,7 +61,7 @@ export default {
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s ease;
-}
+} */
 .modal {
   position: fixed;
   width: 60vw;
@@ -72,7 +72,7 @@ export default {
   background-color: azure;
   border-radius: 2rem;
   padding: 2rem;
-  transition: all 1s;
+  /* transition: all 1s; */
 }
 
 .backdrop {

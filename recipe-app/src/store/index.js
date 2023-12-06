@@ -6,7 +6,7 @@ import rootGetters from "./getters.js";
 
 const store = createStore({
   state: {
-    modalStatus: true,
+    modalStatus: false,
   },
   mutations: rootMutations,
   actions: rootActions,

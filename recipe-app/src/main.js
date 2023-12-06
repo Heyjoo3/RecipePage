@@ -5,6 +5,8 @@ import VueAxios from "vue-axios";
 import store from "./store/index.js";
 // import router from "./router.js";
 
+import eventBus from "./event-bus.js";
+
 import App from "./App.vue";
 
 import TheHeader from "./components/TheHeader.vue";
@@ -18,6 +20,8 @@ const app = createApp(App);
 app.use(VueAxios, axios);
 app.use(store);
 // app.use(router);
+
+app.use(eventBus);
 
 app.component("TheHeader", TheHeader);
 app.component("TheNav", TheNav);
