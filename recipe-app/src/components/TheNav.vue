@@ -1,9 +1,13 @@
 <template>
   <div class="sidenav">
     <div class="links">
-      <a href="#">Home</a>
+      <!-- <a href="#">Home</a>
       <a href="#">Rezepte</a>
-      <a href="#">Notizen</a>
+      <a href="#">Notizen</a> -->
+
+      <router-link to="/start">Home</router-link>
+      <router-link to="/rezepte">Rezepte</router-link>
+      <router-link to="/notizen"> Notizen</router-link>
     </div>
     <div>
       <button><i class="fa-solid fa-plus"> </i> Rezept</button>
