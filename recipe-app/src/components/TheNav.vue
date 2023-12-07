@@ -1,10 +1,9 @@
 <template>
   <div class="sidenav">
     <div class="links">
-      <a href="#">Carnivore</a>
-      <a href="#">Vegetarisch</a>
-      <a href="#">Vegan</a>
-      <a href="#">Favoriten</a>
+      <a href="#">Home</a>
+      <a href="#">Rezepte</a>
+      <a href="#">Notizen</a>
     </div>
     <div>
       <button><i class="fa-solid fa-plus"> </i> Rezept</button>

@@ -1,16 +1,30 @@
 <template>
   <div class="container">
-    <filter-bar></filter-bar>
-    <card-container></card-container>
+    <RouterView name="filter" @add-filter="forwardFilter"></RouterView>
+    <router-view name="content" :filter="filter"></router-view>
+    <router-view name="page"></router-view>
+
+    <!-- <filter-bar @add-filter="forwardFilter"></filter-bar> -->
+    <!-- <card-container :filter="filter"></card-container> -->
   </div>
 </template>
 
 <script>
-import CardContainer from "./CardContainer.vue";
-import FilterBar from "./FilterBar.vue";
+// import { RouterView } from "vue-router";
+// import CardContainer from "./CardContainer.vue";
+// import FilterBar from "./FilterBar.vue";
 
 export default {
-  components: { CardContainer, FilterBar },
+  data() {
+    return { filter: "all" };
+  },
+  // components: { CardContainer, FilterBar, RouterView },
+  methods: {
+    forwardFilter(filter) {
+      console.log(filter);
+      this.filter = filter;
+    },
+  },
 };
 </script>
 

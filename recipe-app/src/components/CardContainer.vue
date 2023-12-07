@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <base-card
-      v-for="rezept in rezepteVegan"
+      v-for="rezept in rezepte"
       :key="rezept.titel"
       :rezept="rezept"
     ></base-card>
@@ -11,6 +11,19 @@
 <script>
 export default {
   inject: ["rezepteVegan"],
+  props: ["filter"],
+
+  computed: {
+    rezepte() {
+      if (this.filter === "all") {
+        return this.rezepteVegan;
+      } else if (this.filter === "schnell") {
+        return this.rezepteVegan.filter((rezept) => rezept.dauer <= 30);
+      } else {
+        return this.rezepteVegan.filter((rezept) => rezept.dauer >= 30);
+      }
+    },
+  },
 };
 </script>
 

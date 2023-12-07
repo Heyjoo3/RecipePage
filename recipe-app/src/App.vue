@@ -112,6 +112,10 @@ export default {
   mounted() {
     this.$eventBus.on("toggleFavorite", this.handleToggleFavorite);
   },
+
+  beforeUnmount() {
+    this.$eventBus.off("toggleFavorite", this.handleToggleFavorite);
+  },
 };
 </script>
 

@@ -3,7 +3,7 @@ import { createApp } from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import store from "./store/index.js";
-// import router from "./router.js";
+import router from "./router.js";
 
 import eventBus from "./event-bus.js";
 
@@ -19,7 +19,7 @@ const app = createApp(App);
 
 app.use(VueAxios, axios);
 app.use(store);
-// app.use(router);
+app.use(router);
 
 app.use(eventBus);
 
