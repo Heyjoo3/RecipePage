@@ -1,5 +1,5 @@
 export default {
   getModalStatus: (state) => state.modalStatus,
-  getCommnets: (state) => state.commnets,
+  storedComments: (state) => state.storedComments,
   getQuote: (state) => state.quote,
 };

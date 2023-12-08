@@ -9,9 +9,9 @@ import eventBus from "./event-bus.js";
 
 import App from "./App.vue";
 
-import TheHeader from "./components/TheHeader.vue";
-import TheNav from "./components/TheNav.vue";
-import TheBody from "./components/TheBody.vue";
+import TheHeader from "./mainPageElements/TheHeader.vue";
+import TheNav from "./mainPageElements/TheNav.vue";
+import TheBody from "./mainPageElements/TheBody.vue";
 import BaseCard from "./components/baseComponents/BaseCard.vue";
 import BaseModal from "./components/baseComponents/BaseModal.vue";
 

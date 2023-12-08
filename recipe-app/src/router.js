@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-import FilterBarVue from "./components/FilterBar.vue";
-import CardContainerVue from "./components/CardContainer.vue";
-import HomePageVue from "./components/HomePage.vue";
-import NotizPageVue from "./components/NotizPage.vue";
+import HomePageVue from "./pages/HomePage.vue";
+import NotizPageVue from "./pages/NotizPage.vue";
+import RezeptPageVue from "./pages/RezeptPage.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -11,18 +10,16 @@ const router = createRouter({
       path: "/",
       redirect: "/start",
       name: "home",
-      // components: { filter: FilterBarVue, content: CardContainerVue },
     },
     {
       path: "/start",
-      // redirect: "/start",
       name: "start",
       components: { page: HomePageVue },
     },
     {
       path: "/rezepte",
       name: "rezpete",
-      components: { filter: FilterBarVue, content: CardContainerVue },
+      components: { page: RezeptPageVue },
     },
     {
       path: "/notizen",

@@ -1,9 +1,9 @@
 <template>
   <header>
-    <div>
+    <!-- <div>
       <label for="">Hintergrundfarbe?</label> <input type="color" />
       <button><i class="fa-regular fa-floppy-disk"></i></button>
-    </div>
+    </div> -->
     <h1>Friedas Rezepte</h1>
   </header>
 </template>
@@ -23,6 +23,11 @@ header {
   justify-content: space-between;
   padding-right: 3vw;
   padding-left: 13vw;
+}
+
+h1 {
+  position: absolute;
+  right: 3vw;
 }
 
 input,

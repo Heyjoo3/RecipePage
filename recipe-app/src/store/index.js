@@ -8,7 +8,7 @@ const store = createStore({
   state: {
     modalStatus: false,
     quote: "",
-    comments: [],
+    storedComments: JSON.parse(localStorage.getItem("myData")) || [],
   },
   mutations: rootMutations,
   actions: rootActions,
