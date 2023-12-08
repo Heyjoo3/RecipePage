@@ -12,8 +12,8 @@ import App from "./App.vue";
 import TheHeader from "./mainPageElements/TheHeader.vue";
 import TheNav from "./mainPageElements/TheNav.vue";
 import TheBody from "./mainPageElements/TheBody.vue";
-import BaseCard from "./components/baseComponents/BaseCard.vue";
-import BaseModal from "./components/baseComponents/BaseModal.vue";
+import BaseCard from "./baseComponents/BaseCard.vue";
+import BaseModal from "./baseComponents/BaseModal.vue";
 
 const app = createApp(App);
 

@@ -12,17 +12,46 @@
 export default {
   inject: ["rezepteVegan"],
   props: ["filter"],
-
+  data() {
+    return {
+      filterFavorite: false,
+    };
+  },
   computed: {
     rezepte() {
-      if (this.filter === "all") {
-        return this.rezepteVegan;
-      } else if (this.filter === "schnell") {
-        return this.rezepteVegan.filter((rezept) => rezept.dauer <= 30);
+      if (this.filterFavorite == false) {
+        if (this.filter === "alle" || this.filter === "all") {
+          return this.rezepteVegan;
+        } else if (this.filter === "schnell") {
+          return this.rezepteVegan.filter((rezept) => rezept.dauer <= 30);
+        } else {
+          return this.rezepteVegan.filter((rezept) => rezept.dauer >= 30);
+        }
       } else {
-        return this.rezepteVegan.filter((rezept) => rezept.dauer >= 30);
+        let temp = this.rezepteVegan.filter(
+          (rezept) => rezept.isFavorite == this.filterFavorite
+        );
+        if (this.filter === "alle" || this.filter === "all") {
+          return temp;
+        } else if (this.filter === "schnell") {
+          return temp.filter((rezept) => rezept.dauer <= 30);
+        } else {
+          return temp.filter((rezept) => rezept.dauer >= 30);
+        }
       }
     },
+  },
+
+  methods: {
+    handleToggleFavorite(info) {
+      this.filterFavorite = info;
+    },
+  },
+  mounted() {
+    this.$eventBus.on("filterFavorite", this.handleToggleFavorite);
+  },
+  beforeUnmount() {
+    this.$eventBus.off("toggleFavorite", this.handleToggleFavorite);
   },
 };
 </script>

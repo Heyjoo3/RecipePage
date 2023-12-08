@@ -25,7 +25,6 @@ export default {
   },
 
   async saveQuote({ commit }) {
-    console.log("action");
     await service
       .getFoodQuote()
       .then((response) => {

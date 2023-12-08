@@ -11,6 +11,7 @@
     </div>
 
     <br />
+    <!-- brauct requiqre() für dynamische img paths, when using webpack oder ähnliche module budler  -->
     <!-- <img src="@/assets/burger.jpg" alt="" /> -->
     <img :src="require('@/assets/' + rezept.imgID)" :alt="rezept.imgID" />
     <!-- <img :src="source" alt="shit" /> -->

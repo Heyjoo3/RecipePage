@@ -17,7 +17,6 @@ export default {
   components: { CardContainer, FilterBar },
   methods: {
     forwardFilter(filter) {
-      console.log(filter);
       this.filter = filter;
     },
   },
