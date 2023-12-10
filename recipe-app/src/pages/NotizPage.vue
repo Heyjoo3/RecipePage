@@ -12,8 +12,8 @@
       <p>Noch keine Ideen vorhanden. Sei der Erste!</p>
     </div>
     <div v-else>
-      <ul>
-        <li v-for="(comment, index) in storedComments" :key="index">
+      <ul  v-for="(comment, index) in storedComments" :key="JSON.stringify(new Date()) + index">
+        <li>
           {{ comment }}
         </li>
       </ul>
@@ -35,10 +35,22 @@ export default {
   computed: {
     ...mapGetters(["storedComments"]),
   },
+
+  watch: {
+    inputText(newText, oldText) {
+      if (newText.length > 50) {
+        alert("Der Text darf maximal 50 Zeichen lang sein.");
+        this.inputText = oldText;
+      }
+    },
+  },
+
   methods: {
     saveLocal() {
-      this.$store.dispatch("saveInputToLocalStorage", this.inputText);
-      this.inputText = "";
+      if (this.inputText.trim() !== "") {
+        this.$store.dispatch("saveInputToLocalStorage", this.inputText);
+      this.inputText = "";}
+      
     },
   },
 };

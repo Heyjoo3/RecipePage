@@ -1,6 +1,7 @@
 <template>
-  <div class="backdrop" @click="closeModal"></div>
-  <!-- <Transition> -->
+  <Transition><div class="backdrop" v-if="isShowing" @click="closeModal"></div></Transition>
+  
+  <Transition>
   <div class="modal" v-if="isShowing">
     <form @submit.prevent="">
       <h2>Füge ein Rezept hinzu</h2>
@@ -28,27 +29,37 @@
       <button>Speichern</button>
     </form>
   </div>
-  <!-- </Transition> -->
+  </Transition>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      isShowing: true,
+      isShowing: false,
     };
   },
   methods: {
     closeModal() {
-      this.$store.dispatch("toggleModal");
+     
       this.isShowing = false;
-    },
+      setTimeout(() => {
+        this.$store.dispatch("toggleModal");
+      }, 600);
   },
+  },
+
+  mounted() {
+  this.isShowing = true;
+},
+
 };
+
+
 </script>
 
 <style scoped>
-/* .v-enter-from,
+.v-enter-from,
 .v-leave-to {
   opacity: 0;
 }
@@ -60,8 +71,8 @@ export default {
 
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 0.5s ease;
-} */
+  transition: opacity 0.5s ease-out;
+}
 .modal {
   position: fixed;
   width: 60vw;
@@ -72,7 +83,7 @@ export default {
   background-color: azure;
   border-radius: 2rem;
   padding: 2rem;
-  /* transition: all 1s; */
+  transition: all 1s;
 }
 
 .backdrop {

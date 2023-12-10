@@ -17,17 +17,17 @@
     <!-- <img :src="source" alt="shit" /> -->
     <br />
     <h3>Zutaten für 4 Personen</h3>
-    <ul v-for="(zutat, index) in rezept.zutaten" :key="index">
+    <ul v-for="(zutat, index) in rezept.zutaten" :key="JSON.stringify(new Date()) + index">
       <li>{{ zutat }}</li>
     </ul>
     <br />
     <h3>Anleitung</h3>
-    <!-- <ol v-for="(schritt, index) in rezept.anleitung" :key="index">
+    <!-- <ol v-for="(schritt, index) in rezept.anleitung" :key="JSON.stringify(new Date())">
       <li>{{ schritt }}</li>
     </ol> -->
     <div v-show="isOpen">
       <ol v-if="rezept.anleitung.length > 0" start="1">
-        <li v-for="(schritt, index) in rezept.anleitung" :key="index">
+        <li v-for="(schritt, index) in rezept.anleitung" :key="JSON.stringify(new Date()) + index">
           {{ schritt }}
         </li>
       </ol>

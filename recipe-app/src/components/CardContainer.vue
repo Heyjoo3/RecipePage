@@ -19,27 +19,18 @@ export default {
   },
   computed: {
     rezepte() {
-      if (this.filterFavorite == false) {
-        if (this.filter === "alle" || this.filter === "all") {
-          return this.rezepteVegan;
-        } else if (this.filter === "schnell") {
-          return this.rezepteVegan.filter((rezept) => rezept.dauer <= 30);
-        } else {
-          return this.rezepteVegan.filter((rezept) => rezept.dauer >= 30);
-        }
-      } else {
-        let temp = this.rezepteVegan.filter(
-          (rezept) => rezept.isFavorite == this.filterFavorite
-        );
-        if (this.filter === "alle" || this.filter === "all") {
-          return temp;
-        } else if (this.filter === "schnell") {
-          return temp.filter((rezept) => rezept.dauer <= 30);
-        } else {
-          return temp.filter((rezept) => rezept.dauer >= 30);
-        }
-      }
-    },
+  const filteredRezepte = this.filterFavorite
+    ? this.rezepteVegan.filter((rezept) => rezept.isFavorite === this.filterFavorite)
+    : this.rezepteVegan;
+
+  if (this.filter === "schnell") {
+    return filteredRezepte.filter((rezept) => rezept.dauer <= 30);
+  } else if (this.filter === "langsam") {
+    return filteredRezepte.filter((rezept) => rezept.dauer >= 30);
+  }
+
+  return filteredRezepte;
+},
   },
 
   methods: {
