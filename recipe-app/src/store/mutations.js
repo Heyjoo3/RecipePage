@@ -3,6 +3,15 @@ export default {
     state.modalStatus = !state.modalStatus;
   },
 
+  toggleAddModal(state) {
+    state.addModalStatus = !state.addModalStatus
+  },
+
+  closeAllModals(state) {
+    state.addModalStatus = false;
+    state.modalStatus = false
+  },
+
   postComment(state, input) {
     state.comments.push(input);
   },

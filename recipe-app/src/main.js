@@ -14,6 +14,9 @@ import TheNav from "./mainPageElements/TheNav.vue";
 import TheBody from "./mainPageElements/TheBody.vue";
 import BaseCard from "./baseComponents/BaseCard.vue";
 import BaseModal from "./baseComponents/BaseModal.vue";
+import EditModal from "./components/EditModal.vue";
+import AddModal from "./components/AddModal.vue";
+
 
 const app = createApp(App);
 
@@ -28,5 +31,7 @@ app.component("TheNav", TheNav);
 app.component("BaseCard", BaseCard);
 app.component("TheBody", TheBody);
 app.component("BaseModal", BaseModal);
+app.component("EditModal", EditModal)
+app.component("AddModal", AddModal)
 
 app.mount("#app");

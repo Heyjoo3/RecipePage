@@ -4,6 +4,15 @@ export default {
   toggleModal({ commit }) {
     commit("toggleModal");
   },
+
+  toggleAddModal({ commit }) {
+    commit("toggleAddModal");
+  },
+
+  closeAllModals({ commit }) {
+    commit("closeAllModals");
+  },
+
   postCommnent({ commit }, payload) {
     commit("postComment", payload);
   },

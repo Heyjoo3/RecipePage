@@ -10,13 +10,20 @@
       <router-link to="/notizen"> Notizen</router-link>
     </div>
     <div>
-      <button><i class="fa-solid fa-plus"> </i> Rezept</button>
+      <button @click="openAddModal"><i class="fa-solid fa-plus"> </i> Rezept</button>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+
+  methods: {
+    openAddModal() {
+      this.$store.dispatch("toggleAddModal");
+    }
+  }
+};
 </script>
 
 <style scoped>

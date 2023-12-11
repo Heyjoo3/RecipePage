@@ -2,10 +2,14 @@
   <the-header></the-header>
   <the-nav></the-nav>
   <the-body></the-body>
-  <base-modal v-if="modalStatus"></base-modal>
+ 
+  <edit-modal v-if="modalStatus"></edit-modal>
+  <add-modal v-if="addModalStatus"></add-modal>
+  
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -89,6 +93,9 @@ export default {
     modalStatus() {
       return this.$store.getters["getModalStatus"];
     },
+    addModalStatus() {
+      return this.$store.getters["getAddModalStatus"];
+    }
   },
 
   methods: {
